@@ -14,34 +14,38 @@ public class LoginPage {
 		PageFactory.initElements(ldriver, this);
 	}
 	
-	@FindBy(id="Email")
-	WebElement Email;
+	@FindBy(xpath="//input[@placeholder='Username']")
+	WebElement Username;
 	
-	@FindBy(id="Password")
-	WebElement password;
+	@FindBy(xpath="//input[@placeholder='Password']")
+	WebElement Password;
 	
-	@FindBy(tagName="button")
+	@FindBy(xpath="//button[normalize-space()='Login']")
 	WebElement loginbtn;
 	
-	@FindBy(linkText="Logout")
+	@FindBy(xpath=" //a[normalize-space()='Logout']")
 	WebElement logoutbtn;
 	
+	@FindBy(xpath="//p[@class=\"oxd-userdropdown-name\"]")
+	WebElement profilename;
 	
-	public void setEmail(String name) {
-		Email.clear();
-		Email.sendKeys(name);
+	
+	public void setUsername(String user_name) {
+		Username.clear();
+		Username.sendKeys(user_name);
 	}
 	
-	public void setPassword(String pswd) {
-		password.clear();
-		password.sendKeys(pswd);
+	public void setPassword(String pass_word) {
+		Password.clear();
+		Password.sendKeys(pass_word);
 	}
-
+	
 	public void Clicklogin() {
 		loginbtn.click();
 	}
 	
 	public void ClickLogout() {
+		profilename.click();
 		logoutbtn.click();
 	}
 }

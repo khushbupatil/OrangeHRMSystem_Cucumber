@@ -27,9 +27,9 @@ public class LoginSteps {
 	    Thread.sleep(3000);
 	}
 
-	@When("User enters Email as {string} and Password as {string}")
+	@When("User enters username as {string} and Password as {string}")
 	public void user_enters_email_as_and_password_as(String username, String password) throws InterruptedException {
-	    lp.setEmail(username);
+	    lp.setUsername(username);
 	    lp.setPassword(password);
 	    Thread.sleep(3000);
 	}

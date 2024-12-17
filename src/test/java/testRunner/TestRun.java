@@ -10,7 +10,7 @@ import io.cucumber.junit.CucumberOptions;
 		features=".//Features/Login.feature",
 		glue ="stepDefinitions",
 		dryRun = false,
-		plugin= {"pretty", "html:test-output"}
+		plugin= {"pretty", "html:target/test-output.html"}
 		)
 public class TestRun {
 
