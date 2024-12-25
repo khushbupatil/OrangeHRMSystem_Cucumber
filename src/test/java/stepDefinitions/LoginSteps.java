@@ -1,23 +1,47 @@
 package stepDefinitions;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 import pageObjects.LoginPage;
 
-public class LoginSteps {
+public class LoginSteps extends BaseClass {
 	
-	public WebDriver driver;
-	public LoginPage lp;
+	@Before
+	public void setup() throws IOException {
+		
+		//reading properties
+		configuprop = new Properties();
+		FileInputStream fileinput = new FileInputStream("config.properties");
+		configuprop.load(fileinput);
+		
+		String br = configuprop.getProperty("Browser");
+		if(br.equals("chrome")) {
+			System.setProperty("webdriver.chrome.driver", configuprop.getProperty("chromepath"));
+			driver = new ChromeDriver();
+		}
+		else if(br.equals("firefox")) {
+			System.setProperty("webdriver.gecko.driver", configuprop.getProperty("firefoxpath"));
+			driver = new FirefoxDriver();
+		}
+		else if(br.equals("ie")) {
+			System.setProperty("webdriver.ie.driver", configuprop.getProperty("iepath"));
+			driver = new InternetExplorerDriver();
+		}
+	}
 	
 	
 	@Given("user Launch Chrome Browser")
 	public void user_launch_chrome_browser() {
-	    
-		System.setProperty("webDriver.chrome.driver", System.getProperty("user.dir")+ "//Drivers/chromedriver.exe");
-		driver = new ChromeDriver();
 		lp = new LoginPage(driver);		
 	}
 
