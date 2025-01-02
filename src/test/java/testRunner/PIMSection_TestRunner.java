@@ -7,7 +7,7 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features=".//Features/AddEmployee.feature",
+		features=".//Features/CRUDEmployee.feature",
 		glue ="stepDefinitions",
 		dryRun = false ,
 		plugin= {"pretty", "html:target/test-output.html"}
