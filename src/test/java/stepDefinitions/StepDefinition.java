@@ -2,6 +2,7 @@ package stepDefinitions;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.NoSuchElementException;
 import java.util.Properties;
 
 import org.junit.Assert;
@@ -16,11 +17,13 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 import pageObjects.LoginPage;
 import pageObjects.PIM_AddEmployee;
+import pageObjects.SearchEmployeePage;
 
 public class StepDefinition extends BaseClass {
 	
 	public String empFullName;
 	boolean status;
+	String searchEmpName;
 	
 	@Before
 	public void setup() throws IOException {
@@ -201,9 +204,10 @@ public class StepDefinition extends BaseClass {
 	
 	
 	@Then("clicks on Save button")
-	public void clicks_on_save_button() 
+	public void clicks_on_save_button() throws InterruptedException 
 	{
 	    addEmp.clicksave();
+	    Thread.sleep(5000);
 	   // logger.info("Saving info by clicking on Save button");
 	}
 	
@@ -227,6 +231,109 @@ public class StepDefinition extends BaseClass {
 	    
 	}*/
 	
+	// Search Employee Steps
+	
+	
+			@When("Clicks on Employee List menu item")
+			public void clicks_on_employee_list_menu_item() 
+			{
+			    searchEmpPage = new SearchEmployeePage(driver);
+			   // logger.info("Initiating Search Page Constructor"); 
+			   // logger.info("Go to Employee list work area");
+			    searchEmpPage.clickOnEmpList();
+			    
+			}
+			
+			@When("User searchs for this employee {string}")
+			public void user_searchs_for_this_employee(String name) throws Exception 
+			{
+				Thread.sleep(3000);
+				//searchEmpName = name;
+			    searchEmpPage.SearchEmp(name);
+			   // logger.info("Search for this employee"+searchEmpName);
+			}
+			
+			@When("clicks on Search button")
+			public void clicks_on_search_button() throws InterruptedException
+			{
+			    searchEmpPage.ClickSearch();
+			    Thread.sleep(5000);
+			    //logger.info("User clicks on Search button and initiates DeletePage constructor");
+			    
+			}
+			
+			@Then("it displays results")
+			public void it_displays_results() throws InterruptedException
+			{
+				Thread.sleep(5000);
+				try {
+					 boolean status = driver.getPageSource().contains("John");
+					 Assert.assertTrue(status);
+			  //  logger.info("Employee "+empFullName+" found in database");
+			  //  logger.info("Search Employee test passed");
+				}
+				catch(NoSuchElementException e)
+				{
+				//	logger.info("There is no Employee "+searchEmpName+" present in application");
+				//	logger.info("Search Employee test failed");
+					driver.close();
+					System.out.println(e);
+				}
+				
+			}
+
+			
+			// Delete Employee steps
+			
+			
+			@When("User clicks on select all")
+			public void user_clicks_on_select_all() throws InterruptedException 
+			{
+				Thread.sleep(3000);
+				//logger.info("Deleting employee "+empFullName);
+				deleteEmpPage.clickSelectAll();
+				Thread.sleep(3000);  
+			   // logger.info("Clicked on Select All control");
+			}
+			
+			@When("clicks on delete button")
+			public void clicks_on_delete_button() throws InterruptedException
+			{
+			    deleteEmpPage.clickOnDelBtn();
+			    Thread.sleep(5000);
+			 //   logger.info("Clicked on Delete button");
+			}
+			
+			@Then("confirmation pop up will appear")
+			public void confirmation_pop_up_will_appear() throws InterruptedException
+			{
+				Thread.sleep(2000);
+			    deleteEmpPage.handlePopUp();
+			    Thread.sleep(5000);
+			  //  logger.info("Confirmation pop up");
+			}
+			
+			/*@Then("record will be deleted")
+			public void record_will_be_deleted() throws Exception
+			{
+			    
+				Thread.sleep(3000);
+				
+				status = driver.getPageSource().contains("No Records Found");
+				try
+				{
+				Assert.assertTrue(status);
+				logger.info(empFullName+ "successfully got deleted");
+				logger.info("Delete Employee test case passed");
+				}
+				
+				catch(Exception e)
+				{
+					logger.info("Delete Employee test case failed i.e user still exists in database");
+				}
+				
+			}
+			*/
 
 
 
