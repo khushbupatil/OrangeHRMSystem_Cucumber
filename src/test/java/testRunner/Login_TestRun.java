@@ -12,6 +12,6 @@ import io.cucumber.junit.CucumberOptions;
 		dryRun = false,
 		plugin= {"pretty", "html:target/test-output.html"}
 		)
-public class TestRun {
+public class Login_TestRun {
 
 }

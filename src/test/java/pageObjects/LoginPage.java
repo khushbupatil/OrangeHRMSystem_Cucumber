@@ -44,8 +44,11 @@ public class LoginPage {
 		loginbtn.click();
 	}
 	
-	public void ClickLogout() {
+	public void clickProfileName() {
 		profilename.click();
+	}
+	public void ClickLogout() {
+		
 		logoutbtn.click();
 	}
 }
