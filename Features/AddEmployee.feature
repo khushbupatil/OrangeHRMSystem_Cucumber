@@ -18,3 +18,32 @@ Feature: Scenarios related to Employee
       | First name | Middle name | Last name |
       | "Damu"     | "Damu"      | "Damu"    |
       | "Pooja"    | "Pooja"     | "Pooja"   |
+
+  @SearchEmp
+  Scenario Outline: Search for a given employee
+    When User hover over PIM menu
+    And Clicks on Employee List menu item
+    When User searchs for this employee <Employee name>
+    And clicks on Search button
+    Then it displays results
+    Then close the browser
+
+    Examples: 
+      | Employee name |
+      | "John"       |
+
+  @DeleteEmp
+  Scenario Outline: Search for a given employee
+    When User hover over PIM menu
+    And Clicks on Employee List menu item
+    When User searchs for this employee <Employee name>
+    And clicks on Search button
+    Then it displays results
+    When User clicks on select all
+    And clicks on delete button
+    Then confirmation pop up will appear
+    Then close the browser
+
+    Examples: 
+      | Employee name |
+      | "John" |
