@@ -8,6 +8,8 @@ import org.apache.logging.log4j.core.Logger;
 import org.openqa.selenium.WebDriver;
 
 import pageObjects.LoginPage;
+import pageObjects.PIMPage;
+import pageObjects.PIM_AddEmployee;
 
 public class BaseClass {
 
@@ -15,7 +17,7 @@ public class BaseClass {
 	public LoginPage lp;
 	public static Logger logger;
 	public Properties configuprop;
-	
+	public PIM_AddEmployee addEmp;
 	
 	public static String randomstring() {
 		String generateString = RandomStringUtils.randomAlphabetic(5);
