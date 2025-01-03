@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Cucumber Suite">
+    <test name="Cucumber Test">
+        <classes>
+            <class name="testRunner.Cucumber_TestNG_TestRunner"/>
+        </classes>
+    </test>
+</suite>

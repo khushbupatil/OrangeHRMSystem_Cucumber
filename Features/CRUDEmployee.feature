@@ -5,8 +5,8 @@ Feature: Scenarios related to Employee
     When User opens URL "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index"
     And User Enters username as "Admin" and Password as "admin123"
     And Click on Login
-
-  @AddEmp
+	
+	@SmokeTest
   Scenario Outline: Add new Employee
     When User hover over PIM menu
     And clicks on Add Employee menu item
@@ -19,7 +19,7 @@ Feature: Scenarios related to Employee
       | "Damu"     | "Damu"      | "Damu"    |
       | "Pooja"    | "Pooja"     | "Pooja"   |
 
-  @SearchEmp
+
   Scenario Outline: Search for a given employee
     When User hover over PIM menu
     And Clicks on Employee List menu item
@@ -32,7 +32,7 @@ Feature: Scenarios related to Employee
       | Employee name |
       | "John"       |
 
-  @DeleteEmp
+
   Scenario Outline: Search for a given employee
     When User hover over PIM menu
     And Clicks on Employee List menu item
