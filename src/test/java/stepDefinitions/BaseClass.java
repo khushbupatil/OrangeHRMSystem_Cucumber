@@ -9,7 +9,6 @@ import org.openqa.selenium.WebDriver;
 
 import pageObjects.DeleteEmployeePage;
 import pageObjects.LoginPage;
-import pageObjects.PIMPage;
 import pageObjects.PIM_AddEmployee;
 import pageObjects.SearchEmployeePage;
 

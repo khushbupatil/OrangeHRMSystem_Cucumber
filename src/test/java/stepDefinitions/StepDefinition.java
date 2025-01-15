@@ -6,15 +6,16 @@ import java.util.NoSuchElementException;
 import java.util.Properties;
 
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import com.Utilities.ScreenshotUtility;
+
 import io.cucumber.java.Before;
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import pageObjects.LoginPage;
 import pageObjects.PIM_AddEmployee;
 import pageObjects.SearchEmployeePage;
@@ -49,56 +50,6 @@ public class StepDefinition extends BaseClass {
 	}
 	
 	
-	/*@Given("user Launch Chrome Browser")
-	public void user_launch_chrome_browser() {
-		lp = new LoginPage(driver);		
-	}
-
-	@When("User opens URL {string}")
-	public void user_opens_url(String url) throws InterruptedException {
-	    driver.get(url);
-	    Thread.sleep(3000);
-	}
-
-	@When("User enters username as {string} and Password as {string}")
-	public void user_enters_email_as_and_password_as(String username, String password) throws InterruptedException {
-	    lp.setUsername(username);
-	    lp.setPassword(password);
-	    Thread.sleep(3000);
-	}
-
-	@When("Click on login")
-	public void click_on_login() throws InterruptedException {
-	   lp.Clicklogin();
-	   Thread.sleep(3000);
-	}
-
-	@Then("Page title should be {string}")
-	public void page_title_should_be(String title) throws InterruptedException {
-		//WebElement msg = driver.findElement(By.xpath("//p[@class='oxd-text oxd-text--p oxd-alert-content-text']"));
-		//if(msg.getText().equals("Invalid credentials"))
-		if(driver.getPageSource().contains("Invalid credentials"))
-		{
-		   driver.close();
-		   Assert.assertTrue(false);
-	   }
-	   else {
-		   Assert.assertEquals(title, driver.getTitle());
-	   }
-	   Thread.sleep(3000);
-	}
-
-	@When("User click on log out link")
-	public void user_click_on_log_out_link() throws InterruptedException {
-	    lp.ClickLogout();
-	    Thread.sleep(3000);
-	}
-
-	@Then("close browser")
-	public void close_browser() {
-	   driver.quit();
-	}
-	*/
 	//Login Page
 	
 	@Given("User Launch Chrome browser")
@@ -106,8 +57,9 @@ public class StepDefinition extends BaseClass {
 	{
 
 		lp = new LoginPage(driver);
+		
 		//logger.info("User lanuchs chrome browser");
-				  
+		
 	}
 	@When("User opens URL {string}")
 	public void user_opens_url(String url) throws InterruptedException 
@@ -131,6 +83,8 @@ public class StepDefinition extends BaseClass {
 		lp.Clicklogin();
 		Thread.sleep(5000);
 		//logger.info("Clicked on Login Button");
+		ScreenshotUtility screenshot = new ScreenshotUtility(driver);
+		screenshot.Screenshot("Login");
 	}
 	@Then("Page Title should be {string}")
 	public void page_title_should_be(String title) 
@@ -210,26 +164,6 @@ public class StepDefinition extends BaseClass {
 	    Thread.sleep(5000);
 	   // logger.info("Saving info by clicking on Save button");
 	}
-	
-	
-	/*@Then("User is added successfully")
-	public void user_is_added_successfully() 
-	{
-	    boolean status = driver.getPageSource().contains(empFullName);
-	    
-	    try
-	    {
-	    Assert.assertTrue(status);
-	   // logger.info(empFullName+" employee is added successfully");
-	    }
-	    catch(Exception e)
-	    {
-	    	System.out.println(e);
-	    	//logger.info(empFullName+" employee is not added");
-	    }
-	    
-	    
-	}*/
 	
 	// Search Employee Steps
 	
@@ -312,29 +246,4 @@ public class StepDefinition extends BaseClass {
 			    Thread.sleep(5000);
 			  //  logger.info("Confirmation pop up");
 			}
-			
-			/*@Then("record will be deleted")
-			public void record_will_be_deleted() throws Exception
-			{
-			    
-				Thread.sleep(3000);
-				
-				status = driver.getPageSource().contains("No Records Found");
-				try
-				{
-				Assert.assertTrue(status);
-				logger.info(empFullName+ "successfully got deleted");
-				logger.info("Delete Employee test case passed");
-				}
-				
-				catch(Exception e)
-				{
-					logger.info("Delete Employee test case failed i.e user still exists in database");
-				}
-				
-			}
-			*/
-
-
-
-}
+		}

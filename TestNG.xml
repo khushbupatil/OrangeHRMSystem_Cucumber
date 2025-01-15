@@ -5,4 +5,4 @@
             <class name="testRunner.Cucumber_TestNG_TestRunner"/>
         </classes>
     </test>
-</suite>
+ </suite>

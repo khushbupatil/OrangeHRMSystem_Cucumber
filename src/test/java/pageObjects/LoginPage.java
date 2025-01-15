@@ -17,6 +17,7 @@ public class LoginPage {
 	@FindBy(xpath="//input[@placeholder='Username']")
 	WebElement Username;
 	
+	
 	@FindBy(xpath="//input[@placeholder='Password']")
 	WebElement Password;
 	
@@ -33,10 +34,11 @@ public class LoginPage {
 	public void setUsername(String user_name) {
 		Username.clear();
 		Username.sendKeys(user_name);
+		
 	}
 	
 	public void setPassword(String pass_word) {
-		Password.clear();
+		Password.clear();  
 		Password.sendKeys(pass_word);
 	}
 	
@@ -51,4 +53,6 @@ public class LoginPage {
 		
 		logoutbtn.click();
 	}
+	
+	
 }
