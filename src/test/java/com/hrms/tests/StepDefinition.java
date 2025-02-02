@@ -1,4 +1,4 @@
-package stepDefinitions;
+package com.hrms.tests;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,15 +10,16 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
-import com.Utilities.ScreenshotUtility;
+import com.hrms.base.BaseClass;
+import com.hrms.models.LoginPage;
+import com.hrms.models.PIM_AddEmployee;
+import com.hrms.models.SearchEmployeePage;
+import com.hrms.utilities.ScreenshotUtility;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pageObjects.LoginPage;
-import pageObjects.PIM_AddEmployee;
-import pageObjects.SearchEmployeePage;
 
 public class StepDefinition extends BaseClass {
 	

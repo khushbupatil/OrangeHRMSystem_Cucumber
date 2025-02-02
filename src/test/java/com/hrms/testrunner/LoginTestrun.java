@@ -1,4 +1,4 @@
-package testRunner;
+package com.hrms.testrunner;
 
 import org.junit.runner.RunWith;
 
@@ -7,11 +7,11 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features=".//Features/CRUDEmployee.feature",
+		features=".//Features/Login.feature",
 		glue ="stepDefinitions",
-		dryRun = false ,
+		dryRun = false,
 		plugin= {"pretty", "html:target/test-output.html"}
 		)
-public class PIMSection_TestRunner {
+public class LoginTestrun {
 
 }

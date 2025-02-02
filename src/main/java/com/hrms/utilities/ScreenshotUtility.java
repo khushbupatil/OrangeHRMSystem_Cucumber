@@ -1,4 +1,4 @@
-package com.Utilities;
+package com.hrms.utilities;
 
 import java.io.File;
 import java.text.SimpleDateFormat;

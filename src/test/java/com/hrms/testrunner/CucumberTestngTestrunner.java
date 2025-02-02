@@ -1,4 +1,4 @@
-package testRunner;
+package com.hrms.testrunner;
 
 import org.testng.annotations.Test;
 
@@ -7,7 +7,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
 		features=".//Features/CRUDEmployee.feature",
-		glue ="stepDefinitions",
+		glue ="com.hrms.tests",
 	    plugin = {
 	        "pretty",  // Pretty print
 	        "html:target/cucumber-reports.html",  // HTML report
@@ -18,7 +18,7 @@ import io.cucumber.testng.CucumberOptions;
 	)
 	
 	  
-public class Cucumber_TestNG_TestRunner extends AbstractTestNGCucumberTests {
+public class CucumberTestngTestrunner extends AbstractTestNGCucumberTests {
 	 @Test
 	    public void runCucumber() {
 	        // This will run the Cucumber tests with TestNG
